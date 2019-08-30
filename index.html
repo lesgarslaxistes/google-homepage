@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<link href="./styles/style.css" type="text/css" rel="stylesheet">
+    <title>Google</title>
+  </head>
+  <body>
+    <div class="header">
+	  <a href="#" class="headerLink">Gmail</a>
+	  <a href="#" class="headerLink">Images</a>
+	  <a href="#" class="headerMenuIcon" title="Google Apps"></a>
+      <a href="#" class="signButton" title="">Sign in</a>
+	</div>
+	<div class="main">
+      <center>
+	  <div class="logo">
+	    <img class="img" src="./images/googlelogo.png" title="Google" width="272" height="92" />
+      </div>
+      <form action="http://google.com/search" method="get">
+	    <div class="searchFormBorder" id="foo">
+	      <input class="searchForm" id="bar" type="text" title="Search" value="">
+	    </div>
+	    <div class="buttons">
+		  <input class="button" id="btnSearch" type="button" value="Google Search">
+		  <input class="button" id="btnLucky"  type="button" value="I'm Feeling Lucky">
+		</div>	  
+	  </form>
+	  </center>
+	</div>
+    <div class="footer">
+	 <a class="footerLink" href="#">Advertising</a>
+	 <a class="footerLink" href="#">Business</a>
+	 <a class="footerLink" href="#">About</a>
+	 <a class="footerLink" href="#">How Search works</a>
+	 <span class="footerRight">
+	 <a class="footerLink" href="#">Privacy</a>
+	 <a class="footerLink" href="#">Terms</a>
+	 <a class="footerLink" href="#">Settings</a>
+	 </span>
+	</div>
+	<script>
+      const body = document.querySelector("body");
+      const bar = document.querySelector("#bar");
+	  const foo =  document.querySelector("#foo");
+	  const btnSearch = document.querySelector("#btnSearch");
+	  const foobar = document.createElement("div");
+	  const links = document.getElementsByTagName("a");
+	  for (let i = 0; i < links.length; i++) {
+	    links[i].addEventListener("click", showFoobar);
+	  }  
+	  bar.value = "";
+
+	  btnSearch.addEventListener("click", function(){
+	                          window.open("http://www.google.com/search?q=" +
+							  bar.value);});
+	  btnLucky.addEventListener("click", function(){
+	                          window.open("http://www.google.com/search?q=" +
+							  bar.value + "&btnI");});
+	  bar.addEventListener("focus", function() {
+	                       foo.classList.add("searchFormBorderHover");});
+	  bar.addEventListener("blur", function() {
+                           foo.classList.remove("searchFormBorderHover");});
+	  bar.focus();
+
+	  function showFoobar() {
+	    foobar.classList.add("foobar");
+	    foobar.innerHTML = "<p>Don't click me!<br />Try to search!</p>";
+	    body.appendChild(foobar);
+	  }
+	</script>
+  </body>
+</html>
